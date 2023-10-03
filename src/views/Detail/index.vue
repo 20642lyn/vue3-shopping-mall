@@ -4,7 +4,7 @@ import XtxShu from '@/components/XtxSku/index.vue'
 import {getDetail}from '@/apis/detail'
 import { onMounted ,ref} from 'vue'
 import {useRoute} from 'vue-router'
-import {useCartStore}from '@/stores/carStore'
+import {useCartStore}from '@/stores/cartStore'
 const cartStore = useCartStore()
 const goods=ref({})
 const route = useRoute()

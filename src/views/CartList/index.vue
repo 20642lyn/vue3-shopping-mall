@@ -7,17 +7,22 @@ const singleCheck=(i,selected)=>{
     console.log(i,selected)
     cartStore.singleCheck(i.skuId,selected)
 }
+
+//全选回调
+const allCheck= (selected)=>{
+  cartStore.allCheck(selected)
+}
 </script>
 
 <template>
   <div class="xtx-cart-page">
-    <div class="container m-top-20">
+    <div class="container m-top-20"> 
       <div class="cart">
         <table>
           <thead>
             <tr>
               <th width="120">
-                <el-checkbox/>
+                <el-checkbox :model-value="cartStore.isAll" @change="allCheck"/>
               </th>
               <th width="400">商品信息</th>
               <th width="220">单价</th>

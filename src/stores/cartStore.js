@@ -1,12 +1,23 @@
 import { defineStore } from 'pinia'
-import { ref, computed} from 'vue'
-
+import { ref, computed, useSSRContext} from 'vue'
+import {useUserStore}from './user'
+import {insertCartAPI,findNewCartListAPI} from '@/apis/cart'
 export const useCartStore = defineStore('cart', () => {
     //1.定义state-cartList
     const cartList = ref([])
+
+  const userStore=useUserStore()
+  const isLogin=computed(()=>userStore.userInfo.token)
     //2.添加购物车操作
-    const addCart = (goods) => {
-        //添加购物车操作
+    const addCart = async (goods) => {
+        const {skuId,count}=goods
+        if(isLogin.value){
+            //登录之后加入购物车逻辑
+             await insertCartAPI({skuId,count})
+             const res=await findNewCartListAPI()
+             cartList.value=res.result
+        }else{
+         //添加购物车操作
         //已添加 count+1
         //未添加 直接push
         //思路：通过匹配传递过来的商品对象中的skuId能不能在cartList中找到，找到就是已添加
@@ -17,6 +28,8 @@ export const useCartStore = defineStore('cart', () => {
         } else {
             cartList.value.push(goods)
         }
+      }
+       
     }
     //3.删除商品
     const delCart = (skuId) => {
@@ -35,6 +48,7 @@ export const useCartStore = defineStore('cart', () => {
     const allCount=computed(()=>cartList.value.reduce((a,c)=>a+c.count,0))
     //2.总价
     const allPrice=computed(()=>cartList.value.reduce((a,c)=>a+c.count*c.price,0))
+
     //3.单选决定全选
     const isAll=computed(()=>cartList.value.every((item)=>item.selected))
     //4.一键全选
@@ -42,11 +56,17 @@ export const useCartStore = defineStore('cart', () => {
         cartList.value.forEach(item=>item.selected=selected)
     }
 
+    //5.已选的数量
+    const selectedCount=computed(()=>cartList.value.filter(item=>item.selected).reduce((a,c)=>a+c.count,0))
+    //6.已选的商品总价
+    const selectedPrice=computed(()=>cartList.value.filter(item=>item.selected).reduce((a,c)=>a+c.count*c.price,0))
     return {
         cartList,
         allCount,
         allPrice,
         isAll,
+        selectedCount,
+        selectedPrice,
         addCart,
         delCart,
         singleCheck,

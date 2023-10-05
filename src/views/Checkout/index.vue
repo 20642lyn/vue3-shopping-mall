@@ -2,10 +2,10 @@
 import {getCheckInfoAPI} from '@/apis/checkout'
 import {onMounted, ref}from 'vue'
 import { createOrderAPI } from '@/apis/checkout';
-import {useRoute} from 'vue-router'
+import {useRouter} from 'vue-router'
 import { useCartStore } from '@/stores/cartStore';
 const cartStore=useCartStore()
-const router =useRoute()
+const router =useRouter()
 const checkInfo = ref({}) // 订单对象
 const curAddress =ref({})  // 地址对象
 const getCheckInfo=async()=>{
@@ -54,7 +54,6 @@ const createOrder=async()=>{
   })
   //更新购物车列表
   cartStore.updateNewList()
-
 }
 </script>
 

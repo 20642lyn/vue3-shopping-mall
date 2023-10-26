@@ -17,6 +17,7 @@ export default defineConfig({
     }),
     // 按需定制主题配置
     Components({
+      //采用sass样式配色系统
       resolvers: [ElementPlusResolver({importStyle:"sass"})],
     }),
   ],

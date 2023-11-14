@@ -1,6 +1,16 @@
 <script setup>
 import { useCategoryStore } from '@/stores/categoryStore'
 import HeaderCart from './HeaderCart.vue'
+import { onMounted, ref} from 'vue'
+import axios from 'axios'
+const getdate=ref([])
+// 获取categorylist数据
+const getnewdate= async()=>{
+    const res=await axios.get(`/headercategory`)
+    getdate.value=res.data
+}
+onMounted(()=>getnewdate())
+console.log(getdate)
 //使用pinia中的数据
 const categoryStore = useCategoryStore()
 </script>
@@ -8,16 +18,35 @@ const categoryStore = useCategoryStore()
 <template>
   <header class='app-header'>
     <div class="container">
-      <h1 class="logo">
-        <RouterLink to="/">小兔鲜</RouterLink>
-      </h1>
+      <div class="logo">
+        <img src="@/assets/images/logo.png" alt="">
+      </div> 
       <ul class="app-header-nav">
         <li class="home">
           <RouterLink to="/">首页</RouterLink>
         </li>
-        <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
-          <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+        <li class="home">
+          <RouterLink to="/category/1005002">美食</RouterLink>
         </li>
+        <li class="home">
+          <RouterLink to="/category/1010000">服饰</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/1011000">母婴</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/1013001">个护</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/1043000">数码</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/109243029">运动</RouterLink>
+        </li>
+        
+        <!-- <li class="home" v-for="item in getdate.value" :key="item.id">
+          <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+        </li> -->
       </ul>
       <div class="search">
         <i class="iconfont icon-search"></i>
@@ -32,7 +61,10 @@ const categoryStore = useCategoryStore()
 
 <style scoped lang='scss'>
 .app-header {
-  background: #fff;
+  height: 150px;
+  background: #fffefed9;
+  margin-bottom: 5px;
+  
 
   .container {
     display: flex;
@@ -40,14 +72,16 @@ const categoryStore = useCategoryStore()
   }
 
   .logo {
-    width: 200px;
-
-    a {
-      display: block;
-      height: 132px;
-      width: 100%;
-      text-indent: -9999px;
-      background: url('@/assets/images/logo.png') no-repeat center 18px / contain;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    // 水平居中、垂直居中
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    img{
+      width: 125px;
+      height: 100px;
     }
   }
 
@@ -57,15 +91,18 @@ const categoryStore = useCategoryStore()
     padding-left: 40px;
     position: relative;
     z-index: 998;
-  
+    ul{
+      margin-left: 40px;
+    }
     li {
-      margin-right: 40px;
+      margin-left: 10px;
+      margin-right: 60px;
       width: 38px;
       text-align: center;
   
       a {
-        font-size: 16px;
-        line-height: 32px;
+        font-size: 18px;
+        line-height: 30px;
         height: 32px;
         display: inline-block;
   
@@ -84,10 +121,10 @@ const categoryStore = useCategoryStore()
 
   .search {
     width: 170px;
-    height: 32px;
+    height: 35px;
     position: relative;
-    border-bottom: 1px solid #e7e7e7;
-    line-height: 32px;
+    border:1px solid #e7e7e7;
+    line-height: 35px;
 
     .icon-search {
       font-size: 18px;

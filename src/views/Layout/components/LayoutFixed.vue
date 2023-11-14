@@ -10,14 +10,31 @@ const categoryStore = useCategoryStore()
 <template>
   <div class="app-header-sticky" :class="{ show: y > 78 }">
     <div class="container">
-      <RouterLink class="logo" to="/" />
+      <div class="logo">
+        <img src="@/assets/images/logo.png" alt="">
+      </div> 
       <!-- 导航区域 -->
       <ul class="app-header-nav ">
         <li class="home">
           <RouterLink to="/">首页</RouterLink>
         </li>
-        <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
-          <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+        <li class="home">
+          <RouterLink to="/category/1005002">美食</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/1010000">服饰</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/1011000">母婴</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/1013001">个护</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/1043000">数码</RouterLink>
+        </li>
+        <li class="home">
+          <RouterLink to="/category/109243029">运动</RouterLink>
         </li>
       </ul>
 
@@ -54,14 +71,25 @@ const categoryStore = useCategoryStore()
 
   .container {
     display: flex;
+    display: flex;
+    // 水平居中、垂直居中
     align-items: center;
+    justify-content: center;
   }
 
   .logo {
-    width: 200px;
-    height: 80px;
-    background: url("@/assets/images/logo.png") no-repeat right 2px;
+    margin-top:5px;
+    width: 150px;
+    height: 70px;
+    display: flex;
+    // 水平居中、垂直居中
+    align-items: center;
+    justify-content: center;
     background-size: 160px auto;
+    img{
+      width: 100px;
+      height: 60px;
+    }
   }
 
   .right {
@@ -74,7 +102,7 @@ const categoryStore = useCategoryStore()
     a {
       width: 38px;
       margin-right: 40px;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1;
 
       &:hover {
@@ -92,12 +120,13 @@ const categoryStore = useCategoryStore()
   z-index: 998;
 
   li {
-    margin-right: 40px;
-    width: 38px;
-    text-align: center;
+    margin-left: 10px;
+      margin-right: 60px;
+      width: 38px;
+      text-align: center;
 
     a {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 32px;
       height: 32px;
       display: inline-block;

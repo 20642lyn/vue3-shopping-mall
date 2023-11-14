@@ -4,27 +4,72 @@
       <div class="contact">
         <div class="container">
           <dl>
-            <dt>客户服务</dt>
-            <dd><i class="iconfont icon-kefu"></i> 在线客服</dd>
-            <dd><i class="iconfont icon-question"></i> 问题反馈</dd>
+            <dt><img src="@/assets/images/duo.png" alt="">品类齐全，轻松购物</dt>
+            <dd>
+            <h4>购物指南</h4>
+            <p>购物流程</p>
+            <p>会员介绍</p>
+            <p>生活旅行</p>
+            <p>常见问题</p>
+            <p>大家电话</p>
+            <p>联系客服</p>
+            </dd>
+            <dd>
+            <h4>配送方式</h4>
+            <p>上门自提</p>
+            <p>211限时达</p>
+            <p>配送服务查询</p>
+            <p>配送费收取标准</p>
+            </dd>
           </dl>
           <dl>
-            <dt>关注我们</dt>
-            <dd><i class="iconfont icon-weixin"></i> 公众号</dd>
-            <dd><i class="iconfont icon-weibo"></i> 微博</dd>
+            <dt><img src="@/assets/images/kuai.png" alt="">多仓直发，极速配送</dt>
+            <dd>
+              <h4>支付方式</h4>
+            <p>货到付款</p>
+            <p>在线支付</p>
+            <p>分期付款</p>
+            <p>公司转账</p>
+            </dd>
+            <dd>
+              <h4>售后服务</h4>
+            <p>售后政策</p>
+            <p>价格保护</p>
+            <p>退款说明</p>
+            <p>返修/退换货</p>
+            <p>取消订单</p>
+            </dd>
+          </dl>
+          
+          <dl>
+            <dt><img src="@/assets/images/shen.png " alt="">天天低价，限时秒杀</dt>
+            <dd>
+              <h4>限时秒杀</h4>
+            <p>准时准点</p>
+            <p>货量有限</p>
+            <p>限时低价</p>
+            <p>手快则有</p>
+            <p>手慢则无</p>
+            </dd>
+            <dd>
+              <h4>特色服务</h4>
+            <p>夺宝岛</p>
+            <p>DIY装机</p>
+            <p>延保服务</p>
+            <p>京东E卡</p>
+            <p>京东通信</p>
+            <p>京鱼座智能</p>
+            </dd>
+            <!-- <dd class="hotline">限时秒杀入口 <small>周六至周日 20:00-23:00</small></dd> -->
           </dl>
           <dl>
-            <dt>下载APP</dt>
+            <dt><img src="@/assets/images/hao.png" alt="">随时随地，APP下单</dt>
             <dd class="qrcode"><img src="@/assets/images/qrcode.jpg" /></dd>
             <dd class="download">
               <span>扫描二维码</span>
               <span>立马下载APP</span>
               <a href="javascript:;">下载页面</a>
             </dd>
-          </dl>
-          <dl>
-            <dt>服务热线</dt>
-            <dd class="hotline">400-0000-000 <small>周一至周日 8:00-18:00</small></dd>
           </dl>
         </div>
       </div>
@@ -49,14 +94,19 @@
           <div class="copyright">
             <p>
               <a href="javascript:;">关于我们</a>
-              <a href="javascript:;">帮助中心</a>
-              <a href="javascript:;">售后服务</a>
-              <a href="javascript:;">配送与验收</a>
-              <a href="javascript:;">商务合作</a>
-              <a href="javascript:;">搜索推荐</a>
-              <a href="javascript:;">友情链接</a>
+              <a href="javascript:;"> 联系我们 </a>
+              <a href="javascript:;"> 联系客服</a>
+              <a href="javascript:;">合作招商</a>
+              <a href="javascript:;">商家帮助</a>
+              <a href="javascript:;"> 营销中心</a>
+              <a href="javascript:;">手机达邻</a>
+              <a href="javascript:;"> 友情链接</a>
+              <a href="javascript:;">销售联盟 </a>
+              <a href="javascript:;"> 风险监测</a>
+              <a href="javascript:;">质量公告</a>
+              <a href="javascript:;">隐私政策</a>
             </p>
-            <p>CopyRight © 小兔鲜儿</p>
+            <p> © 达邻</p>
           </div>
         </div>
       </div>
@@ -67,22 +117,21 @@
   .app_footer {
     overflow: hidden;
     background-color: #f5f5f5;
-    padding-top: 20px;
+    padding-top: 10px;
   
     .contact {
-      background: #fff;
+      background: #f3f3f3;
   
       .container {
-        padding: 60px 0 40px 25px;
+        padding: 30px 0 40px 25px;
         display: flex;
       }
   
       dl {
-        height: 190px;
+        height: 280px;
         text-align: center;
-        padding: 0 72px;
-        border-right: 1px solid #f2f2f2;
-        color: #999;
+        padding: 0 60px;
+        color: #131212;
   
         &:first-child {
           padding-left: 0;
@@ -105,18 +154,11 @@
         width: 92px;
         height: 92px;
         padding-top: 10px;
-        border: 1px solid #ededed;
-  
-        .iconfont {
-          font-size: 36px;
-          display: block;
-          color: #666;
+        a:hover{
+          color:#232121
         }
-  
-        &:hover {
-          .iconfont {
-            color: $xtxColor;
-          }
+        p{
+          margin-top: 8px;
         }
   
         &:last-child {
@@ -156,7 +198,7 @@
       .hotline {
         padding-top: 20px;
         font-size: 22px;
-        color: #666;
+        color: #232121;
         width: auto;
         height: auto;
         border: none;

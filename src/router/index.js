@@ -12,6 +12,8 @@ import PayBack from '@/views/Pay/PayBack.vue'
 import Member from '@/views/Member/index.vue'
 import UserInfo from '@/views/Member/components/UserInfo.vue'
 import UserOrder from '@/views/Member/components/UserOrder.vue'
+import Register from '@/views/Login/components/Register.vue'
+import FindPassword from '@/views/Login/components/FindPassword.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -70,8 +72,16 @@ const router = createRouter({
       ]
     },
     {
+        path: '/register',
+        component:Register
+    },
+    {
+        path:'/findpassword',
+        component:FindPassword
+    },
+    {
       path: '/login',
-      component: Login
+      component: Login,
     }
   ],
   //路由滚动行为定制

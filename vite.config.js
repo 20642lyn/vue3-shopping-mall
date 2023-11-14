@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 //element-plus按需导入
@@ -38,3 +37,10 @@ export default defineConfig({
     }
   }
 })
+
+// // 引入接口路由函数 相当于拦截器
+// module.exports={
+//   devServer:{
+//     before:require('./mock/index')
+//   }
+// }

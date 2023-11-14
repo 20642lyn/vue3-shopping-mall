@@ -3,11 +3,25 @@ import GoodsItem from '../Home/components/GoodsItem.vue'
 import {useBanner}from './composables/useBanner'
 import{useCategory} from './composables/useCategory'
 
-//获取banner数据
-const {bannerList} = useBanner()
-//获取分类数据
-const {categoryData} = useCategory()
 
+//获取分类数据
+let i = 1;
+const {categoryData} = useCategory()
+if(categoryData.name=="美食"){
+   i=2;
+}else if(categoryData.name=="服饰"){
+  i=3;
+}else if(categoryData.name=="母婴"){
+  i=4;
+}else if(categoryData.name=="个护"){
+  i=5;
+}else if(categoryData.name=="数码"){
+  i=6;
+}else if(categoryData.name=="运动"){
+  i=7;
+}
+//获取banner数据
+const {bannerList} = useBanner(i)
 </script>
 
 <template>
@@ -23,8 +37,8 @@ const {categoryData} = useCategory()
       <!-- 轮播图 -->
       <div class="home-banner">
     <el-carousel height="500px">
-      <el-carousel-item v-for="item in bannerList" :key="item.id">
-        <img :src="item.imgUrl" alt="">
+      <el-carousel-item v-for="(index,item) in bannerList" :key="item">
+        <img :src="index" alt="">
       </el-carousel-item>
     </el-carousel>
    </div>

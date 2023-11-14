@@ -47,7 +47,6 @@ input[type='checkbox'] {
     outline: none;
     border: none;
     -webkit-appearance: none;
-
     &::placeholder {
         color: #ccc;
     }
@@ -74,7 +73,12 @@ ul {
     margin: 0 auto;
     position: relative;
 }
-
+.homecontainer{
+    width: 1240px;
+    margin: 0 auto;
+    height: 500px;
+    position: relative;
+}
 .ellipsis {
     white-space: nowrap;
     text-overflow: ellipsis;

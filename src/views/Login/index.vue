@@ -42,7 +42,6 @@ const doLogin=()=>{
     //调用实例方法
     formRef.value.validate(async (valid)=>{
         //所有表单都通过校验才为true
-        console.log(valid)
         //以valid做为判断条件 如果通过校验才执行登录逻辑
         if(valid){
          await userStore.getUserInfo({account,password})
@@ -57,14 +56,14 @@ const doLogin=()=>{
 
 
 <template>
-  <div>
+  <div class="loginAll">
     <header class="login-header">
       <div class="container m-top-20">
         <h1 class="logo">
-          <RouterLink to="/">小兔鲜</RouterLink>
+          <img src="@/assets/images/logo.png" alt="">
         </h1>
         <RouterLink class="entry" to="/">
-          进入网站首页
+          进入达邻商城
           <i class="iconfont icon-angle-right"></i>
           <i class="iconfont icon-angle-right"></i>
         </RouterLink>
@@ -77,8 +76,7 @@ const doLogin=()=>{
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px"
-              status-icon>
+            <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
               <el-form-item prop="account" label="账户">
                 <el-input v-model="form.account"/>
               </el-form-item>
@@ -93,6 +91,10 @@ const doLogin=()=>{
               <el-button size="large" class="subBtn" @click="doLogin">点击登录</el-button>
             </el-form>
           </div>
+          <div class="account-footer">
+                <a href="/findPassword">忘记密码</a>  
+                <a href="/register">注册账号</a>
+              </div>
         </div>
       </div>
     </section>
@@ -101,23 +103,32 @@ const doLogin=()=>{
       <div class="container">
         <p>
           <a href="javascript:;">关于我们</a>
-          <a href="javascript:;">帮助中心</a>
-          <a href="javascript:;">售后服务</a>
-          <a href="javascript:;">配送与验收</a>
-          <a href="javascript:;">商务合作</a>
-          <a href="javascript:;">搜索推荐</a>
-          <a href="javascript:;">友情链接</a>
+              <a href="javascript:;"> 联系我们 </a>
+              <a href="javascript:;"> 联系客服</a>
+              <a href="javascript:;">合作招商</a>
+              <a href="javascript:;">商家帮助</a>
+              <a href="javascript:;">营销中心</a>
+              <a href="javascript:;">手机达邻</a>
+              <a href="javascript:;">友情链接</a>
+              <a href="javascript:;">销售联盟 </a>
+              <a href="javascript:;"> 风险监测</a>
+              <a href="javascript:;">质量公告</a>
+              <a href="javascript:;">隐私政策</a>
         </p>
-        <p>CopyRight &copy; 小兔鲜儿</p>
+        <p> © 达邻</p>
       </div>
     </footer>
   </div>
 </template>
 
 <style scoped lang='scss'>
+.loginAll{
+  background: url('@/assets/images/loginbg1.png') no-repeat center / cover;
+}
 .login-header {
-  background: #fff;
-  border-bottom: 1px solid #e4e4e4;
+  background: #f9f6f6;
+  // opacity:0.5;
+  // border-bottom: 1px solid #e4e4e4;
 
   .container {
     display: flex;
@@ -127,14 +138,14 @@ const doLogin=()=>{
 
   .logo {
     width: 200px;
-
-    a {
-      display: block;
-      height: 132px;
-      width: 100%;
-      text-indent: -9999px;
-      background: url("@/assets/images/logo.png") no-repeat center 18px / contain;
-    }
+    height: 105px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+    width: 130px;
+    height: 103px; 
+    };
   }
 
   .sub {
@@ -147,26 +158,30 @@ const doLogin=()=>{
   }
 
   .entry {
-    width: 120px;
+    width: 190px;
     margin-bottom: 38px;
-    font-size: 16px;
+    font-size: 20px;
 
     i {
-      font-size: 14px;
+      font-size: 20px;
       color: $xtxColor;
       letter-spacing: -5px;
     }
   }
+  .entry:hover{
+    color:#d42a2a;
+    font-size:23px;
+  }
 }
 
 .login-section {
-  background: url('@/assets/images/login-bg.png') no-repeat center / cover;
+  // background: url('@/assets/images/loginbg1.png') no-repeat center / cover;
   height: 488px;
   position: relative;
 
   .wrapper {
     width: 380px;
-    background: #fff;
+    background: #ffffff;
     position: absolute;
     left: 50%;
     top: 54px;
@@ -197,7 +212,7 @@ const doLogin=()=>{
 
 .login-footer {
   padding: 30px 0 50px;
-  background: #fff;
+  // background: #fff;
 
   p {
     text-align: center;
@@ -213,11 +228,29 @@ const doLogin=()=>{
       ~a {
         border-left: 1px solid #ccc;
       }
+      
     }
+    a:hover{
+        color:#090909;
+        font-size:15px;
+      }
   }
 }
 
 .account-box {
+  .account-footer{
+    padding:0 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a{
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+    a:hover{
+      color:#d42a2a;
+    }
+  }
   .toggle {
     padding: 15px 40px;
     text-align: right;

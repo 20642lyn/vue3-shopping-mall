@@ -8,11 +8,10 @@ const cartStore=useCartStore()
 <template>
   <div class="cart">
     <a class="curr" href="javascript:;">
-      <i class="iconfont icon-cart"></i><em>{{ cartStore.cartList.length }}</em>
+      <i class="iconfont icon-cart"><em>{{ cartStore.cartList.length }}</em></i>购物车
     </a>
     <div class="layer">
       <div class="list">
-        
         <div class="item" v-for="i in cartStore.cartList" :key="i">
           <RouterLink to="">
             <img :src="i.picture" alt="" />
@@ -31,12 +30,13 @@ const cartStore=useCartStore()
         </div>
        
       </div>
+      <!-- 购物车 -->
       <div class="foot">
         <div class="total">
           <p>共 {{cartStore.allCount}}件商品</p>
           <p>&yen; {{ cartStore.allPrice }} </p>
         </div>
-        <el-button size="large" type="primary" @click="$router.push('/cartlist')" >去购物车结算</el-button>
+        <el-button size="large" class="bt" type="primary" @click="$router.push('/cartlist')" >去购物车结算</el-button>
       </div>
     </div>
 </div>
@@ -44,19 +44,20 @@ const cartStore=useCartStore()
 
 <style scoped lang="scss">
 .cart {
-  width: 50px;
+  width: 200px;
   position: relative;
   z-index: 600;
 
   .curr {
-    height: 32px;
+    width: 100px;
+    height: 30px;
     line-height: 32px;
     text-align: center;
     position: relative;
     display: block;
 
     .icon-cart {
-      font-size: 22px;
+      font-size: 20px;
     }
 
     em {
@@ -118,7 +119,12 @@ const cartStore=useCartStore()
       justify-content: space-between;
       background: #f8f8f8;
       align-items: center;
-
+      .bt{
+        background-color: #f83a3a;
+      }
+      .bt:hover{
+        color:#151515;
+      }
       .total {
         padding-left: 10px;
         color: #999;
